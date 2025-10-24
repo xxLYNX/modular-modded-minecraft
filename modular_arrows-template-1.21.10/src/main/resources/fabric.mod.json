@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "modular_arrows",
+	"version": "${version}",
+	"name": "modular_arrows",
+	"description": "Module: Artisan Arrows",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/modular_arrows/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"name.modid.Modular_arrows"
+		],
+		"client": [
+			"name.modid.Modular_arrowsClient"
+		],
+		"fabric-datagen": [
+			"name.modid.Modular_arrowsDataGenerator"
+		]
+	},
+	"mixins": [
+		"modular_arrows.mixins.json",
+		{
+			"config": "modular_arrows.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
