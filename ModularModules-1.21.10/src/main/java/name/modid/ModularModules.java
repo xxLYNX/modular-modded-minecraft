@@ -3,6 +3,7 @@ package name.modid;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
@@ -25,5 +26,10 @@ public class ModularModules implements ModInitializer {
 		// Proceed with mild caution.
         ModularArchery.initialize();
 		LOGGER.info("Hello Fabric world! - ModularModules has Initialized!");
+
+        FabricDefaultAttributeRegistry.register(
+                ModularArchery.OBSIDIAN_ARROW_ENTITY,
+                name.modid.entity.ObsidianArrowEntity.createEntityAttributes(
+        ));
 	}
 }

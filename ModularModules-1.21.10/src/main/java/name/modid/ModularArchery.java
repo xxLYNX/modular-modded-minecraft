@@ -1,6 +1,9 @@
 package name.modid;
+import name.modid.entity.ObsidianArrowEntity;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ArrowItem;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -10,7 +13,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
-import name.modid.item.ObsidianArrowItem;
+
 
 public class ModularArchery {
     public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings){
@@ -25,9 +28,19 @@ public class ModularArchery {
 
         return item;
     }
+
 //ArrowItem is used instead of Item so it is treated as ammunition via vanilla methods
     public static final Item OBSIDIAN_ARROW =
             register("obsidian_arrow", name.modid.item.ObsidianArrowItem::new, new Item.Settings());
+
+    public static final EntityType<ObsidianArrowEntity> OBSIDIAN_ARROW_ENTITY = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(ModularModules.MOD_ID, "obsidian_arrow_entity"),
+            EntityType.Builder.create(ObsidianArrowEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.5F, 0.5F)
+                    .build("obsidian_arrow_entity")
+    );
+
 
     public static void initialize() {
         // Get the event for modifying entries in the ingredients group.

@@ -3,12 +3,14 @@
   "category": "building",
   "group": "wooden_stairs",
   "key": {
-    "#": "minecraft:stick"
+    "A": "minecraft:obsidian",
+    "B": "minecraft:stick",
+    "C": "minecraft:feather"
   },
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "A",
+    "B",
+    "C"
   ],
   "result": {
     "count": 4,
